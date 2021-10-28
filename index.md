@@ -135,17 +135,29 @@ Boot into 'Arch Linux' entry of GRUB menu
 
 #### Setting Up DHCP Client
 
+Use DHCP to be able to acquire a DHCP IP address lease on a network with DHCP
+
 `systemctl start dhcpcd && systemctl enable dhcpcd`
 
+Start your network interface
+
 `ip link set ens33 up`
+
+Check connectivity
 
 `ping google.com`
 
 #### Set Up Users
 
+Install the sudo tool
+
 `pacman -S sudo`
 
+Create the sudo group
+
 `groupadd sudo`
+
+Edit the sudoers file
 
 `sudo EDITOR=vim visudo`
 
@@ -164,9 +176,15 @@ Set password for users to 'GraceHopper1906`
 
 #### Install ZSH with Oh My ZSH
 
+Install the neccesary packages
+
 `pacman -S curl wget git zsh`
 
+Install oh my zsh
+
 `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+
+Clone oh my zsh plugins
 
 `git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions`
 
@@ -184,13 +202,20 @@ Import eric's custom vimrc
 
 #### Install SSH
 
+Install SSH
+
 `pacman -S openssh`
 
 #### Installing a Desktop Environment (GUI)
 
+Install the Xorg Display Server, the Gnome Desktop Environment, the Gnome Software Package Plugin to fix the Graphic Software Package Manager,
+Firefox Web Browser, Leafpad Graphical Text Editor, and Cascadia Code Font.
+
 `pacman -S xorg xorg-server gnome gnome-packagekit gnome-software-packagekit-plugin firefox leafpad ttf-cascadia-code`
 
 Press Enter to accept default options for all prompts
+
+Enable the Gnome Display Manager to start when you start the computer, then start it manually right now
 
 `systemctl enable gdm.service && systemctl start gdm.service`
 
