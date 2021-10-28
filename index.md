@@ -32,35 +32,51 @@ w to exit
 
 #### Formatting Partitions
 
+Use mkfs and mkswap to format the corresponding partitions into ext4 and swap partitions
+
 `mkfs.ext4 /dev/sda3`
 
 `mkswap /dev/sda2`
 
 ### Mounting Partitions
 
+Mount the installation's primary partitition to start setting up the system's files
+
 `mount /dev/sda3 /mnt`
+
+Turn on the linux swap memory of the installation's swap partition
 
 `swapon /dev/sda2`
 
 ### Installing Base Software
 
+Install software to the installation's file system
+
 `pacstrap /mnt base linux linux-firmware iproute2 net-tools dhcpcd ufw vim`
 
 ### Configure the System
+
+Tell the system where file systems and data are
 
 `genfstab -U /mnt >> /mnt/etc/fstab`
 
 #### Chroot
 
+Change your linux instance's root directory to be that of the installation's root directory
+
 `arch-chroot /mnt`
 
 #### Time Zone
+
+Set the installation's time zone
 
 `ln -sf /usr/share/zoneinfo/US/Central /etc/localtime`
 
 `hwclock --systohc`
 
 ##### Localization
+
+Establish the character encoding for the language and characters you want your system to use
 
 Open `/etc/locale.gen` and uncomment "en_US.UTF-8 UTF-8"
 
@@ -70,27 +86,45 @@ Open `/etc/locale.gen` and uncomment "en_US.UTF-8 UTF-8"
 
 ##### Network Configuration
 
+Set the hostname
+
 `hostnamectl set-hostname Arch-CS3353`
 
 #### Initramfs
+
+Generate the initial system that gets loaded on boot-up
 
 `mkinitcpio -P`
 
 #### Root password
 
+Set the password for 'root'
+
 `passwd`
 
 #### Boot Loader
 
+This is what will let you boot into your system, without this your system will not boot.
+
 `pacman -S grub`
+
+Point grub to the storage device with your installation on it
 
 `grub-install /dev/sda`
 
+Tell grub where your operating system is on the storage device
+
 `grub-mkconfig -o /boot/grub/grub.cfg`
+
+Exit the chroot Environment
 
 `exit`
 
+Unmount the installation's storage device
+
 `umount -R /mnt`
+
+Reboot the system
 
 `reboot`
 
