@@ -160,4 +160,4 @@ Press Enter to accept default options for all prompts
 
 `systemctl enable gdm.service && systemctl start gdm.service`
 
-####
+### Enjoy your new Arch Linux System
