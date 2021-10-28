@@ -2,6 +2,7 @@
 
 ### Setting the System Time
 `timedatectl set-ntp true`
+
 `timedatectl set-timezone US/Central`
 
 ### Partitioning the Hard Disk
@@ -32,11 +33,13 @@ w to exit
 #### Formatting Partitions
 
 `mkfs.ext4 /dev/sda3`
+
 `mkswap /dev/sda2`
 
 ### Mounting Partitions
 
 `mount /dev/sda3 /mnt`
+
 `swapon /dev/sda2`
 
 ### Installing Base Software
