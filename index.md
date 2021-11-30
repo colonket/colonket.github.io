@@ -1,4 +1,4 @@
-Looking for my personal blog? Follow this link: <https://blog.ericiniguez.codes>
+Looking for my personal blog? Follow this link: <https://www.ericiniguez.codes>
 
 # Pages
 
