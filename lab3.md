@@ -106,35 +106,35 @@ Proceed to the next section to start using your new VPN.
 
 ## Step 5 - Test VPN Connection
 
-1. From your Droplet console, open a shell in your wireguard docker container using:
+From your Droplet console, open a shell in your wireguard docker container using:
 
 `sudo docker exec -it wireguard bash`
 
-2. Change to the wireguard server's configuration directory:
+Change to the wireguard server's configuration directory:
 
 `cd /config`
 
-3. Read the tunnel configuration file for peer1:
+Read the tunnel configuration file for peer1:
 
 `cat peer1/peer1.conf`
 
-4. Copy the output of the `cat` command we just ran. We will be pasting this into a
+Copy the output of the `cat` command we just ran. We will be pasting this into a
 tunnel configuration file on our client.
 
-5. Download and install a wireguard client for your computer from <https://download.wireguard.com>
+Download and install a wireguard client for your computer from <https://download.wireguard.com>
 
-6. In the bottom left corner of your wireguard client window, select the drop-down menu option
+In the bottom left corner of your wireguard client window, select the drop-down menu option
 "Add empty tunnel..."
 
-7. Select all of the text in the file that appears and paste in the contents of the `peer1.conf` file.
+Select all of the text in the file that appears and paste in the contents of the `peer1.conf` file.
 
-8. Give your tunnel a name and select "Save" to save your new tunnel to your client.
+Give your tunnel a name and select "Save" to save your new tunnel to your client.
 
-9. Select your new tunnel and click "Activate" to activate the tunnel to your Wireguard VPN server.
+Select your new tunnel and click "Activate" to activate the tunnel to your Wireguard VPN server.
 
 ![wireguard client gui](img/lab3-tunnel-gui.png)
 
-10. In a web browser, navigate to <https://ipleak.net> to see information about your IP address.
+In a web browser, navigate to <https://ipleak.net> to see information about your IP address.
 
 If your tunnel is activated, you should be seeing the public IPv4 IP address of your DigitalOcean Droplet.
 With our tunnel configuration, our computer's internet traffic is routed through our DigitalOcean Droplet,
