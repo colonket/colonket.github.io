@@ -225,8 +225,8 @@ server{
     proxy_pass 10.0.10.1:8080;
 }
 server {
-    # A more robust implementation would return code 301 instead of passing to port 443,
-    # but this example rule serves to show that we can route traffic between ports on the same host
+    # A real implementation would return code 301 instead of passing to port 443,
+    # this example rule is less complicated and reflects the idea of passing traffic among the same host
     listen 80;
     proxy_pass 127.0.0.1:443;
 }
@@ -251,6 +251,7 @@ to the ports of the host "Internet Accessible Reverse Proxy".
 
 When the "Internet Peer" connects to "Reverse Proxy"'s port 80, the `nginx` webserver
 redirects the traffic to "Reverse Proxy"'s port 443.
+( The example configuration would fail to serve port 80 if implemented, you would need to return code 301)
 
 When the "Internet Peer" connects to "Reverse Proxy"'s port 443, the `nginx` webserver
 redirects the traffic to "Web App 2"'s port 3000.
@@ -266,4 +267,4 @@ This way, users could connect to <https://example.web.app> and be directed to "W
 Then, developers could connect to <https://example.web.app:8000> and be directed to "Web App 1", the development app.
 
 Meanwhile, users who connect to <http://example.web.app> would be redirected to <https://example.web.app> to upgrade the security of their connection.
-( Please mind that the example configuration would not do this the proper way, which would be by return code 301 to the web browser.)
+( Please mind that the example configuration would fail and needs to return code 301 to the web browser.)
