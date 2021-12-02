@@ -1,6 +1,11 @@
-# CS3353 Lab 3 - Eric Iniguez
+# CS3353 Lab 3 - Wireguard VPN
 
-## Wireguard VPN using Docker
+Written by Eric Iniguez
+
+The following is a tutorial describing the steps to create and connect to your
+own Wireguard VPN server using DigitalOcean's cloud infrastructure.
+
+Sensitive information has been obscured with black boxes in the screenshots.
 
 ## Step 1 - Create a DigitalOcean Account
 
@@ -203,11 +208,11 @@ then to pass those connection to the Droplet's port 51820.
 Edit your computer's tunnel configuration file to use Port 80 by changing the number 51820 to 80
 after the colon in the endpoint address field.
 
-Activate your tunnel to connect to your VPN over port 80. 
+Activate your tunnel to connect to your VPN over port 80.
 
 Congrats! Your network should be seeing that your computer has a connection on port 80, appearing as though you are browsing the internet with the HTTP protocol. In reality, you are connecting to a VPN to encrypt your computer's network traffic.
 
-### Closing Thoughts
+### Reverse Proxy - Closing Thoughts
 
 We effectively created a Reverse Proxy that proxies connections from one port to another.
 This is especially useful if you wish to connect to multiple computers through the multiple ports of a reverse proxy server.
@@ -221,7 +226,7 @@ server{
 }
 server {
     # A more robust implementation would return code 301 instead of passing to port 443,
-    # but this rule serves to show that we can route traffic between ports on the same host
+    # but this example rule serves to show that we can route traffic between ports on the same host
     listen 80;
     proxy_pass 127.0.0.1:443;
 }
